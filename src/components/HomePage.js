@@ -4,15 +4,17 @@ import { useGetCryptosQuery } from "../services/cryptoApi";
 import { useGetExchangeQuery } from "../services/exchangeApi";
 import { numToKorean } from "num-to-korean";
 import { Link } from "react-router-dom";
+import { Cryptocurrencies, News } from "../components";
+import classes from "./HomePage.module.css";
 const { Title } = Typography;
 const HomePage = () => {
-  const { data, isLoading, error } = useGetCryptosQuery();
+  const { data, isFetching } = useGetCryptosQuery(10);
   const { data: exchangeData } = useGetExchangeQuery();
   const globalStats = data?.data?.stats;
   const koreanExchange = exchangeData?.rates?.KRW;
 
-  if (isLoading) return <Spin tip="loading..." />;
-
+  if (isFetching) return <Spin tip="loading..." />;
+  //console.log(data);
   return (
     <>
       <Title level={2}>Global crypto stats</Title>
@@ -45,12 +47,20 @@ const HomePage = () => {
           />
         </Col>
       </Row>
-      <div>
+      <div className={classes["home-heading-container"]}>
         <Title level={2}>Top 10 cryptocurrencies in the world</Title>
-        <Title level={2}>
+        <Title level={3}>
           <Link to="/cryptocurrencies">Show More</Link>
         </Title>
       </div>
+      <Cryptocurrencies simplified={true} />
+      <div className={classes["home-heading-container"]}>
+        <Title level={2}>latest News</Title>
+        <Title level={3}>
+          <Link to="/news">Show More</Link>
+        </Title>
+      </div>
+      <News />
     </>
   );
 };
