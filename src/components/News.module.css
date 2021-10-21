@@ -1,0 +1,9 @@
+.provider-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.provider-name {
+  margin-left: 10px;
+}
