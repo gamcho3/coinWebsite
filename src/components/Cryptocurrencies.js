@@ -5,7 +5,7 @@ import { useGetExchangeQuery } from "../services/exchangeApi";
 import { Link } from "react-router-dom";
 import { numToKorean } from "num-to-korean";
 import classes from "./Cryptocurrencies.module.css";
-const { Search } = Input;
+
 const Cryptocurrencies = ({ simplified }) => {
   const count = simplified ? 10 : 100;
   const { data: cryptoList, isFetching } = useGetCryptosQuery(count);
@@ -39,7 +39,7 @@ const Cryptocurrencies = ({ simplified }) => {
         {cryptos?.map((crypto) => {
           return (
             <Col xs={24} sm={12} lg={6} key={crypto.uuid}>
-              <Link to={`/crypto:${crypto.id}`}>
+              <Link to={`/crypto/${crypto.id}`}>
                 <Card
                   hoverable
                   title={`${crypto.rank} ${crypto.name}`}
@@ -57,6 +57,7 @@ const Cryptocurrencies = ({ simplified }) => {
                       Math.floor(crypto.price * koreanExchange),
                       "mixed"
                     )}
+                    원
                   </p>
                   <p>
                     <strong>시가총액</strong> :{" "}

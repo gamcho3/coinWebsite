@@ -2,7 +2,7 @@ import React from "react";
 import { Typography, Row, Col, Statistic, Spin } from "antd";
 import { useGetCryptosQuery } from "../services/cryptoApi";
 import { useGetExchangeQuery } from "../services/exchangeApi";
-import { useGetNewsQuery } from "../services/newsApi";
+//import { useGetNewsQuery } from "../services/newsApi";
 import { numToKorean } from "num-to-korean";
 import { Link } from "react-router-dom";
 import { Cryptocurrencies, News } from "../components";

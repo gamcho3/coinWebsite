@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import { Avatar, Typography, Button, Menu } from "antd";
-import React, { Fragment } from "react";
+import { Avatar, Typography, Menu } from "antd";
+import React from "react";
 import icon from "../images/coin.png";
 import classes from "./Navbar.module.css";
 import {

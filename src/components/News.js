@@ -3,6 +3,7 @@ import { Select, Typography, Row, Col, Avatar, Card, Spin, Input } from "antd";
 import moment from "moment";
 import { useGetNewsQuery } from "../services/newsApi";
 import classes from "./News.module.css";
+
 const { Text, Title } = Typography;
 const { Option } = Select;
 const { Search } = Input;
@@ -45,17 +46,17 @@ const News = ({ simplified }) => {
       )}
       {cryptoNews?.value.map((news, idx) => (
         <Col xs={24} sm={12} lg={6} key={idx}>
-          <Card
-            hoverable
-            cover={
-              <img
-                src={news?.image?.thumbnail.contentUrl || demoImage}
-                alt="news"
-                style={{ width: "100%" }}
-              />
-            }
-          >
-            <a href={news.url} target="_blank" rel="noreferrer" alt="news">
+          <a href={news.url} target="_blank" rel="noreferrer" alt="news">
+            <Card
+              hoverable
+              cover={
+                <img
+                  src={news?.image?.thumbnail.contentUrl || demoImage}
+                  alt="news"
+                  style={{ width: "100%" }}
+                />
+              }
+            >
               <div>
                 <Title level={3}>{news.name}</Title>
               </div>
@@ -73,8 +74,8 @@ const News = ({ simplified }) => {
                   {moment(news.datePublished).startOf("ss").fromNow()}
                 </Text>
               </div>
-            </a>
-          </Card>
+            </Card>
+          </a>
         </Col>
       ))}
     </Row>

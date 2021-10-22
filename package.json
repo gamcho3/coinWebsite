@@ -11,6 +11,7 @@
     "antd": "^4.16.13",
     "axios": "^0.23.0",
     "chart.js": "^3.5.1",
+    "html-react-parser": "^1.4.0",
     "millify": "^4.0.0",
     "moment": "^2.29.1",
     "num-to-korean": "^0.4.3",
@@ -21,6 +22,7 @@
     "react-redux": "^7.2.5",
     "react-router-dom": "^5.3.0",
     "react-scripts": "4.0.3",
+    "uuid": "^8.3.2",
     "web-vitals": "^1.1.2"
   },
   "scripts": {
