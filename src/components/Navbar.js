@@ -17,7 +17,7 @@ const Navbar = () => {
       <div className={classes["logo-container"]}>
         <Avatar src={icon} size="large" />
         <Title className={classes.logo} level={2}>
-          <Link to="/">bitcon</Link>
+          <Link to="/">V coin</Link>
         </Title>
       </div>
       <Menu
