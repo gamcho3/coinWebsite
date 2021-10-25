@@ -29,7 +29,6 @@ const Cryptocurrencies = ({ simplified }) => {
         <div className={classes["crypto-search"]}>
           <Input
             placeholder="search coin"
-            enterButton
             onChange={(e) => setSearchCoin(e.target.value)}
           />
         </div>

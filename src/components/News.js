@@ -26,18 +26,19 @@ const News = ({ simplified }) => {
       {!simplified && (
         <Col
           span={24}
+          className={classes["header-container"]}
           style={{ display: "flex", justifyContent: "space-between" }}
         >
           <Search
             placeholder="search coin"
-            enterButton
             onSearch={(value) => setNewsCategory(value)}
-            style={{ width: 250 }}
+            className={classes.search}
+            style={{ width: "200px" }}
           />
           <Select
-            style={{ width: 200 }}
             onChange={(value) => setSortSearch(value)}
-            placeholder={sortSearch}
+            placeholder="정렬순서"
+            className={classes.select}
           >
             <Option value="date">최신순</Option>
             <Option value="relevance">관련순</Option>
@@ -45,7 +46,7 @@ const News = ({ simplified }) => {
         </Col>
       )}
       {cryptoNews?.value.map((news, idx) => (
-        <Col xs={24} sm={12} lg={6} key={idx}>
+        <Col xs={24} sm={12} lg={8} key={idx}>
           <a href={news.url} target="_blank" rel="noreferrer" alt="news">
             <Card
               hoverable

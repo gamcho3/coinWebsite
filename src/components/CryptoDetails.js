@@ -58,7 +58,7 @@ const CryptoDetails = () => {
     },
     { title: "순위", icon: <TrademarkOutlined />, value: coinData.rank },
     {
-      title: "거래량",
+      title: "거래금액",
       icon: <ThunderboltOutlined />,
       value: numToKorean(Math.floor(coinData.volume * koreanExchange), "mixed"),
     },

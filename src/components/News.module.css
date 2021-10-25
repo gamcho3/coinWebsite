@@ -7,3 +7,27 @@
 .provider-name {
   margin-left: 10px;
 }
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.search {
+  width: 250px;
+}
+
+.select {
+  width: 200px;
+}
+
+@media screen and (max-width: 420px) {
+  .header-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .header-container .search {
+    margin-bottom: 10px;
+    width: 200px;
+  }
+}

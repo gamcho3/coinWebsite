@@ -8,6 +8,7 @@ import {
   FundOutlined,
   MoneyCollectOutlined,
   BulbOutlined,
+  MenuOutlined,
 } from "@ant-design/icons";
 const { Title } = Typography;
 const Navbar = () => {
@@ -19,7 +20,13 @@ const Navbar = () => {
           <Link to="/">bitcon</Link>
         </Title>
       </div>
-      <Menu theme="dark" mode="horizontal">
+      <Menu
+        theme="dark"
+        mode="horizontal"
+        overflowedIndicator={
+          <MenuOutlined style={{ fontSize: "1.5rem", padding: 0 }} />
+        }
+      >
         <Menu.Item icon={<HomeOutlined />}>
           <Link to="/">Home</Link>
         </Menu.Item>
