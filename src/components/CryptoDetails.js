@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { useParams } from "react-router-dom";
-import { useGetCoinQuery } from "../services/cryptoApi";
+import {
+  useGetCoinQuery,
+  useGetCryptoHistoryQuery,
+} from "../services/cryptoApi";
 import { useGetExchangeQuery } from "../services/exchangeApi";
-import { Spin, Typography, Row, Col, Avatar } from "antd";
+import { Spin, Typography, Row, Col, Avatar, Select } from "antd";
 import {
   MoneyCollectOutlined,
   DollarCircleOutlined,
@@ -18,30 +21,44 @@ import classes from "./CryptoDetails.module.css";
 import { numToKorean } from "num-to-korean";
 import { v4 as uuidv4 } from "uuid";
 import HTMLReactParser from "html-react-parser";
-
+import LineChart from "./LineChart";
 const { Title, Text } = Typography;
+const { Option } = Select;
 const CryptoDetails = () => {
   const { coinId } = useParams();
-  const { data, isFetching } = useGetCoinQuery(coinId);
+  const [timePeriod, setTimePeriod] = useState("7d");
+
+  const { data: coinList, isFetching: coinFetching } = useGetCoinQuery(coinId);
   const { data: exchangeData } = useGetExchangeQuery();
+  const { data: coinHistory } = useGetCryptoHistoryQuery({
+    coinId,
+    timePeriod,
+  });
   const koreanExchange = exchangeData?.rates?.KRW;
-  const coinData = data?.data?.coin;
-
-  //console.log(coinData.description);
-
-  if (isFetching) return <Spin tip="loading..." />;
+  const coinData = coinList?.data?.coin;
+  const cryptoHistory = coinHistory?.data;
+  //console.log(cryptoHistory);
 
   let stats;
   let genericStats;
+
+  if (coinFetching) return <Spin tip="loading..." />;
+  if (coinData === undefined) {
+    return <p> error</p>;
+  }
+
   stats = [
     {
       title: "가격",
       icon: <DollarCircleOutlined />,
-      value: numToKorean(Math.floor(coinData.price * koreanExchange), "mixed"),
+      value: `${numToKorean(
+        Math.floor(coinData.price * koreanExchange),
+        "mixed"
+      )}₩`,
     },
     { title: "순위", icon: <TrademarkOutlined />, value: coinData.rank },
     {
-      title: "하루 거래량",
+      title: "거래량",
       icon: <ThunderboltOutlined />,
       value: numToKorean(Math.floor(coinData.volume * koreanExchange), "mixed"),
     },
@@ -86,6 +103,25 @@ const CryptoDetails = () => {
     },
   ];
 
+  const time = {
+    "3h": "3시간",
+    "24h": "24시간",
+    "7d": "7일",
+    "30d": "한달",
+    "1y": "1년",
+    "3m": "3분",
+    "3y": "3년",
+    "5y": "5년",
+  };
+  const timeSelect = [];
+  for (const property in time) {
+    timeSelect.push(
+      <Option key={property} value={property}>
+        {time[property]}
+      </Option>
+    );
+  }
+
   return (
     <Col className={classes["coin-detail-container"]}>
       <Col className={classes["coin-heading-container"]}>
@@ -95,7 +131,20 @@ const CryptoDetails = () => {
         </Title>
         <p>{coinData.name}의 가격과 시가총액을 확인하세요</p>
       </Col>
-      {/* chart 넣기 */}
+      <Select
+        placeholder="시간대를 설정하세요"
+        onChange={(value) => setTimePeriod(value)}
+        style={{ width: "200px" }}
+      >
+        {timeSelect}
+      </Select>
+      {cryptoHistory && (
+        <LineChart
+          cryptoHistory={cryptoHistory}
+          koreanExchange={koreanExchange}
+          currentPrice={coinData.price}
+        />
+      )}
       <Col className={classes["stats-container"]}>
         <Col className={classes["coin-value-statistics"]}>
           <Col className={classes["stats-header"]}>
