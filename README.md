@@ -6,9 +6,12 @@
 
 - 가상화폐 현황과 차트, 뉴스를 볼수 있는 웹사이트
 
+<br>
+
 ## 프로젝트 기간
 
 - 21.10.15 ~ 21.10.25
+  <br>
 
 ## 사용된 기술 & 라이브러리
 
@@ -18,6 +21,7 @@
 - chart.js
 - Ant Design(ui)
 - 그외 moment,millify,num-to-korean,uuid 사용
+  <br>
 
 ## 프로젝트 구현
 
@@ -80,6 +84,8 @@ export const {
   useGetExchangesQuery,
 } = cryptoApi;
 ```
+
+<br>
 
 ## 웹사이트 링크
 
