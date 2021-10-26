@@ -1,9 +1,9 @@
 import React from "react";
 import { useGetExchangesQuery } from "../services/cryptoApi";
 import { useGetExchangeQuery } from "../services/exchangeApi";
-import { Spin, Table, Collapse } from "antd";
-import { numToKorean } from "num-to-korean";
-const { Panel } = Collapse;
+import { Spin, Table } from "antd";
+//import { numToKorean } from "num-to-korean";
+//const { Panel } = Collapse;
 const Exchanges = () => {
   const { data: exchanges, isFetching } = useGetExchangesQuery();
   const { data: exchangeData } = useGetExchangeQuery();
