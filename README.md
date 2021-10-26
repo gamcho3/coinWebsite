@@ -41,7 +41,7 @@ export default configureStore({
 });
 ```
 
-- Data Fetch
+- Data Fetch(coinRaking)
 
 ```javascript
 const cryptoApiHeaders = {
@@ -80,3 +80,7 @@ export const {
   useGetExchangesQuery,
 } = cryptoApi;
 ```
+
+3. 웹사이트 링크
+
+[들어가 보기](https://vitcoin.netlify.app/)
