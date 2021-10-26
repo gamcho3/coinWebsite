@@ -89,4 +89,8 @@ export const {
 
 ## 웹사이트 링크
 
-[들어가 보기](https://vitcoin.netlify.app/)
+[구경하기](https://vitcoin.netlify.app/)
+
+## 구현 영상
+
+![나의 동영상1](https://user-images.githubusercontent.com/70016523/138905268-7906a1f4-cdd6-4188-86c1-7c728d0e07f7.gif)
