@@ -81,6 +81,6 @@ export const {
 } = cryptoApi;
 ```
 
-3. 웹사이트 링크
+## 웹사이트 링크
 
 [들어가 보기](https://vitcoin.netlify.app/)
